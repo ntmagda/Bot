@@ -10,9 +10,9 @@ def count_friends(driver):
     return friendsCount
 
 
-def write_post(driver):
+def write_post(driver, text):
     driver.find_element_by_tag_name("textarea").click()
-    driver.find_element_by_tag_name("textarea").send_keys("cokolwiek")
+    driver.find_element_by_tag_name("textarea").send_keys(text)
     time.sleep(5)
     driver.find_element_by_xpath("//button[contains(.,'Opublikuj')]").click()
     time.sleep(5)
