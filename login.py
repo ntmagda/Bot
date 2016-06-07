@@ -1,6 +1,6 @@
 import os
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from make_connection import make_connection
 import time
 import write_post
 
@@ -8,13 +8,15 @@ page = "http://www.facebook.com"
 username = "graznowsop@gmail.com"
 password = "graznowsop123"
 
-profile = webdriver.FirefoxProfile()
-profile.set_preference('browser.download.folderList', 2)
-profile.set_preference('browser.download.manager.showWhenStarting', False)
-profile.set_preference('browser.download.dir', os.getcwd())
-profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/csv/xls')
-driver = webdriver.Firefox(profile)
-driver.get(page)
+driver = None
+while driver is None:
+    try:
+        # connect
+        driver = make_connection(page, username, password)
+        time.sleep(5)
+    except:
+        print("cannot connect")
+        pass
 
 UN = driver.find_element_by_id('email')
 UN.send_keys(username)
@@ -42,4 +44,3 @@ driver.find_element_by_xpath("//a[@data-tab-key='friends']").click()
 # write_post()
 # time.sleep(5)
 # driver.close()
-
