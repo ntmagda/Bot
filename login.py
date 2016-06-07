@@ -2,7 +2,7 @@ import os
 from selenium import webdriver
 from make_connection import make_connection
 import time
-import write_post
+import write_post1
 
 page = "http://www.facebook.com"
 username = "graznowsop@gmail.com"
