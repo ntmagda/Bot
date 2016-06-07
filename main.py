@@ -4,7 +4,7 @@ from selenium import webdriver
 from make_connection import make_connection
 from login import login
 import time
-from the_game import write_post, go_to_profil, count_friends, go_to_friends_list, click_friend, scroll, add_all_friends
+from the_game import write_post, go_to_profil, count_friends, go_to_friends_list, click_friend, scroll1, add_all_friends, click_all_likes
 from socket import error as socket_error
 
 page = "http://www.facebook.com"
@@ -23,13 +23,13 @@ while driver is None:
         pass
 
 login(driver, username, password)
-
 go_to_profil(driver)
 print(count_friends(driver))
-write_post(driver, "costamfajnego")
+# write_post(driver, "costamfajnego")
 go_to_friends_list(driver)
 click_friend(driver, 'magda.nowaktrzos')
-write_post(driver, "chyba_dziala")
+click_all_likes(driver)
+# write_post(driver, "chyba_dziala")
 go_to_friends_list(driver)
-scroll(driver)
-add_all_friends(driver)
+# scroll(driver)
+# add_all_friends(driver)
