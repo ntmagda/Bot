@@ -2,19 +2,20 @@ import os
 from selenium import webdriver
 from make_connection import make_connection
 import time
-import write_post1
+from the_game import write_post, go_to_profil, count_friends
+from socket import error as socket_error
 
 page = "http://www.facebook.com"
 username = "graznowsop@gmail.com"
 password = "graznowsop123"
 
-driver = make_connection(page, username, password)
+driver = make_connection(page)
 while driver is None:
     try:
         # connect
-        driver = make_connection(page, username, password)
+        driver = make_connection(page)
         time.sleep(5)
-    except:
+    except socket_error:
         print("cannot connect")
         time.sleep(50)
         pass
@@ -30,18 +31,10 @@ LI.click()
 
 time.sleep(3)
 # click profile
-driver.find_element_by_xpath("//a[@title='Profil']").click()
-time.sleep(3)
 
-frineds = driver.find_element_by_xpath("//*[@data-tab-key='friends']").text
-# count = Integer.parseInt(frinedsCount)
-friendsCount = frineds[7:]
-print("Liczba znajomych: ", friendsCount)
-# click friends list
-driver.find_element_by_xpath("//a[@data-tab-key='friends']").click()
+go_to_profil(driver)
+
+print(count_friends(driver))
 
 
-#
-# write_post()
-# time.sleep(5)
-# driver.close()
+write_post(driver)
