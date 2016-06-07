@@ -1,5 +1,8 @@
 import os
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+import write_post
 
 page = "http://www.facebook.com"
 username = "graznowsop@gmail.com"
@@ -21,6 +24,22 @@ PS.send_keys(password)
 
 LI = driver.find_element_by_id('loginbutton')
 LI.click()
+
+time.sleep(3)
+# click profile
+driver.find_element_by_xpath("//a[@title='Profil']").click()
+time.sleep(3)
+
+frineds = driver.find_element_by_xpath("//*[@data-tab-key='friends']").text
+# count = Integer.parseInt(frinedsCount)
+friendsCount = frineds[7:]
+print("Liczba znajomych: ", friendsCount)
+# click friends list
+driver.find_element_by_xpath("//a[@data-tab-key='friends']").click()
+
+
 #
-# if driver.find_elements_by_partial_link_text(("home") ).exists():
-#     print("Login succesful")
+# write_post()
+# time.sleep(5)
+# driver.close()
+
