@@ -37,3 +37,5 @@ scheight = 0.1
 while scheight < 9.9:
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight/%s);" % scheight)
     scheight += 0.01
+
+driver.find_element_by_xpath('//a[@href="https://www.facebook.com/magda.nowaktrzos?fref=pb&hc_location=friends_tab"]').click()
