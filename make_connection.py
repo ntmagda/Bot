@@ -1,5 +1,5 @@
 from selenium import webdriver
-
+import os
 
 def make_connection(page, username, password):
     profile = webdriver.FirefoxProfile()
