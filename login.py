@@ -8,15 +8,16 @@ page = "http://www.facebook.com"
 username = "graznowsop@gmail.com"
 password = "graznowsop123"
 
-driver = None
-while driver is None:
-    try:
-        # connect
-        driver = make_connection(page, username, password)
-        time.sleep(5)
-    except:
-        print("cannot connect")
-        pass
+driver = make_connection(page, username, password)
+# while driver is None:
+#     try:
+#         # connect
+#         driver = make_connection(page, username, password)
+#         time.sleep(5)
+#     except:
+#         print("cannot connect")
+#         time.sleep(50)
+#         pass
 
 UN = driver.find_element_by_id('email')
 UN.send_keys(username)
